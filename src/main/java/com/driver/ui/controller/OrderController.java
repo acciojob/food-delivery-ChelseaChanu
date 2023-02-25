@@ -2,6 +2,7 @@ package com.driver.ui.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.driver.Converter.OrderConverter;
 import com.driver.model.request.OrderDetailsRequestModel;
@@ -39,6 +40,7 @@ public class OrderController {
 	@PostMapping()
 	public OrderDetailsResponse createOrder(@RequestBody OrderDetailsRequestModel order) {
 		OrderDto orderDto = OrderConverter.requestToDto(order);
+		orderDto.setOrderId(UUID.randomUUID().toString());
 		OrderDto dtoResponse = orderService.createOrder(orderDto);
 		OrderDetailsResponse orderResponse = OrderConverter.orderDtoToResponse(dtoResponse);
 		return orderResponse;

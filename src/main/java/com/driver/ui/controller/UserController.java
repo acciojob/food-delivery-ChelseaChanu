@@ -2,9 +2,9 @@ package com.driver.ui.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.driver.Converter.UserConverter;
-import com.driver.io.repository.UserRepository;
 import com.driver.model.request.UserDetailsRequestModel;
 import com.driver.model.response.OperationStatusModel;
 import com.driver.model.response.RequestOperationName;
@@ -40,6 +40,7 @@ public class UserController {
 	@PostMapping()
 	public UserResponse createUser(@RequestBody UserDetailsRequestModel userDetails) throws Exception{
 		UserDto userDto = UserConverter.requestToDto(userDetails);
+		userDto.setUserId(UUID.randomUUID().toString());
 		UserDto dtoResponse = userService.createUser(userDto);
 		UserResponse userResponse = UserConverter.userDtoToResponse(dtoResponse);
 		return userResponse;

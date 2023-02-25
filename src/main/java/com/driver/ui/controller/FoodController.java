@@ -1,6 +1,7 @@
 package com.driver.ui.controller;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.ArrayList;
 
 import com.driver.Converter.FoodConverter;
@@ -39,6 +40,7 @@ public class FoodController {
 	@PostMapping("/create")
 	public FoodDetailsResponse createFood(@RequestBody FoodDetailsRequestModel foodDetails) {
 		FoodDto foodDto = FoodConverter.requestToDto(foodDetails);
+		foodDto.setFoodId(UUID.randomUUID().toString());
 		FoodDto responseDto = foodService.createFood(foodDto);
 		FoodDetailsResponse response = FoodConverter.foodDtoToResponse(responseDto);
 		return response;
