@@ -1,7 +1,5 @@
 package com.driver.shared.dto;
 
-import java.io.Serializable;
-
 public class OrderDto{
 
 	private long id;
@@ -10,6 +8,18 @@ public class OrderDto{
 	private String[] items;
 	private String userId;
 	private boolean status;
+
+	public OrderDto() {
+	}
+
+	public OrderDto(long id, String orderId, float cost, String[] items, String userId, boolean status) {
+		this.id = id;
+		this.orderId = orderId;
+		this.cost = cost;
+		this.items = items;
+		this.userId = userId;
+		this.status = status;
+	}
 
 	public long getId() {
 		return id;

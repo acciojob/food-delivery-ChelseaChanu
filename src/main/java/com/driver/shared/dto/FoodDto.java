@@ -1,7 +1,5 @@
 package com.driver.shared.dto;
 
-import java.io.Serializable;
-
 public class FoodDto{
 
 	private long id;
@@ -9,6 +7,18 @@ public class FoodDto{
 	private String foodName;
 	private String foodCategory;
 	private float foodPrice;
+
+	public FoodDto() {
+		
+	}
+
+	public FoodDto(long id, String foodId, String foodName, String foodCategory, float foodPrice) {
+		this.id = id;
+		this.foodId = foodId;
+		this.foodName = foodName;
+		this.foodCategory = foodCategory;
+		this.foodPrice = foodPrice;
+	}
 
 	public long getId() {
 		return id;
